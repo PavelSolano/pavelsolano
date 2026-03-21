@@ -9,29 +9,29 @@ export default function Hero() {
   const tr = useT(lang);
 
   return (
-    <section className="relative z-10 max-w-[1180px] mx-auto px-14 pt-[130px] pb-20 grid grid-cols-[1fr_400px] gap-16 items-center min-h-screen">
+    <section className="relative z-10 max-w-[1180px] mx-auto px-5 md:px-14 pt-[100px] md:pt-[130px] pb-14 md:pb-20 grid grid-cols-1 md:grid-cols-[1fr_400px] gap-10 md:gap-16 items-center">
       {/* LEFT */}
       <div className="flex flex-col">
         {/* Eyebrow */}
-        <div className="flex items-center gap-[10px] font-mono text-[11px] text-teal tracking-[0.1em] uppercase mb-8 font-medium">
+        <div className="flex items-center gap-[10px] font-mono text-[11px] text-teal tracking-[0.1em] uppercase mb-6 md:mb-8 font-medium">
           <span className="w-[18px] h-[1.5px] bg-teal rounded-full flex-shrink-0" />
           Systems Scientist · Complex Systems Designer
         </div>
 
         {/* Name */}
-        <p className="text-[13px] font-semibold text-muted tracking-[0.12em] uppercase mb-[18px]">
+        <p className="text-[13px] font-semibold text-muted tracking-[0.12em] uppercase mb-[14px] md:mb-[18px]">
           Pavel Solano García
         </p>
 
         {/* H1 */}
-        <h1 className="text-[clamp(42px,5.2vw,68px)] font-extrabold leading-[1.07] tracking-[-0.035em] text-ink mb-7">
+        <h1 className="text-[clamp(38px,5.2vw,68px)] font-extrabold leading-[1.07] tracking-[-0.035em] text-ink mb-5 md:mb-7">
           Complex Systems
           <br />
           <span className="text-teal">Designer</span>
         </h1>
 
         {/* Description */}
-        <p className="text-[16px] text-muted leading-[1.8] max-w-[480px] mb-11 font-light">
+        <p className="text-[15px] md:text-[16px] text-muted leading-[1.8] max-w-[480px] mb-8 md:mb-11 font-light">
           <strong className="text-ink2 font-semibold">{tr.hero.descBold1}</strong>{" "}
           {tr.hero.descText1}{" "}
           <strong className="text-ink2 font-semibold">
@@ -41,16 +41,16 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex gap-3 items-center">
+        <div className="flex flex-wrap gap-3 items-center">
           <a
             href="#work"
-            className="inline-flex items-center gap-2 bg-ink text-white text-[14px] font-bold px-[26px] py-[13px] rounded-full hover:bg-ink2 hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(0,0,0,0.12)] transition-all duration-200"
+            className="inline-flex items-center gap-2 bg-ink text-white text-[14px] font-bold px-[22px] md:px-[26px] py-[12px] md:py-[13px] rounded-full hover:bg-ink2 hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(0,0,0,0.12)] transition-all duration-200"
           >
             {tr.hero.cta1}
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 text-muted text-[14px] font-semibold px-[26px] py-[13px] rounded-full border-[1.5px] border-[#d8d8d4] hover:text-ink hover:border-ink2 transition-all duration-200"
+            className="inline-flex items-center gap-2 text-muted text-[14px] font-semibold px-[22px] md:px-[26px] py-[12px] md:py-[13px] rounded-full border-[1.5px] border-[#d8d8d4] hover:text-ink hover:border-ink2 transition-all duration-200"
           >
             {tr.hero.cta2}
           </a>
@@ -58,8 +58,8 @@ export default function Hero() {
       </div>
 
       {/* RIGHT — Photo */}
-      <div className="flex items-center justify-center relative">
-        <div className="relative w-[360px] h-[460px]">
+      <div className="flex items-center justify-center relative mt-4 md:mt-0">
+        <div className="relative w-full max-w-[300px] md:max-w-none md:w-[360px] h-[360px] md:h-[460px] mx-auto">
           {/* Glow */}
           <div className="photo-glow" />
 

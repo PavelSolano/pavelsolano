@@ -9,18 +9,18 @@ export default function Services() {
   const s = tr.services;
 
   return (
-    <section id="about" className="relative z-10 max-w-[1180px] mx-auto px-14 py-[72px]">
+    <section id="about" className="relative z-10 max-w-[1180px] mx-auto px-5 md:px-14 py-12 md:py-[72px]">
       <span className="inline-flex font-mono text-[10.5px] text-teal bg-[rgba(11,168,154,0.08)] border border-[rgba(11,168,154,0.18)] px-3 py-1 rounded-full tracking-[0.08em] uppercase mb-[18px]">
         {s.tag}
       </span>
       <h2 className="text-[clamp(26px,3.2vw,40px)] font-extrabold text-ink tracking-[-0.025em] leading-[1.1] mb-3">
         {s.title}
       </h2>
-      <p className="text-[15.5px] text-muted max-w-[500px] leading-[1.8] mb-11 font-light">
+      <p className="text-[15.5px] text-muted max-w-[500px] leading-[1.8] mb-8 md:mb-11 font-light">
         {s.subtitle}
       </p>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {s.items.map((item) => (
           <div
             key={item.title}

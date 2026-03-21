@@ -19,13 +19,13 @@ export default function Home() {
       <main>
         <Hero />
         <Stats />
-        <hr className="border-none border-t border-[#e8e8e4] mx-14" />
+        <hr className="border-none border-t border-[#e8e8e4] mx-5 md:mx-14" />
         <Services />
-        <hr className="border-none border-t border-[#e8e8e4] mx-14" />
+        <hr className="border-none border-t border-[#e8e8e4] mx-5 md:mx-14" />
         <Projects />
-        <hr className="border-none border-t border-[#e8e8e4] mx-14" />
+        <hr className="border-none border-t border-[#e8e8e4] mx-5 md:mx-14" />
         <Articles />
-        <hr className="border-none border-t border-[#e8e8e4] mx-14" />
+        <hr className="border-none border-t border-[#e8e8e4] mx-5 md:mx-14" />
         <ContactCTA />
       </main>
       <Footer />

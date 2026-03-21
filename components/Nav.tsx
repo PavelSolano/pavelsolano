@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useT } from "@/lib/i18n";
 
@@ -15,6 +14,7 @@ const links = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { lang, toggle } = useLanguage();
   const tr = useT(lang);
 
@@ -25,50 +25,81 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-14 h-[60px] transition-all duration-300 ${
-        scrolled
-          ? "bg-[rgba(248,248,246,0.92)] backdrop-blur-[20px] border-b border-[#e8e8e4]"
-          : "bg-transparent"
-      }`}
-    >
-      {/* Logo */}
-      <a
-        href="#"
-        className="font-mono text-[12px] text-teal tracking-[0.04em]"
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-14 h-[60px] transition-all duration-300 ${
+          scrolled || menuOpen
+            ? "bg-[rgba(248,248,246,0.96)] backdrop-blur-[20px] border-b border-[#e8e8e4]"
+            : "bg-transparent"
+        }`}
       >
-        ps<span className="text-muted2">{"//"}</span>pavelsolano.mx
-      </a>
+        {/* Logo */}
+        <a href="#" className="font-mono text-[12px] text-teal tracking-[0.04em]">
+          ps<span className="text-muted2">{"//"}</span>pavelsolano.mx
+        </a>
 
-      {/* Links */}
-      <ul className="flex gap-9 list-none">
-        {links.map((l) => (
-          <li key={l.href}>
+        {/* Desktop Links */}
+        <ul className="hidden md:flex gap-9 list-none">
+          {links.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className="text-[13.5px] font-medium text-muted hover:text-ink transition-colors duration-200 tracking-[0.01em]"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Right side */}
+        <div className="flex items-center gap-2 md:gap-3">
+          {/* Lang toggle */}
+          <button
+            onClick={toggle}
+            className="font-mono text-[11px] font-semibold text-muted border border-[#d8d8d4] px-[10px] py-[5px] rounded-full hover:text-ink hover:border-ink2 transition-all duration-200 tracking-[0.06em] uppercase"
+          >
+            {lang === "es" ? "EN" : "ES"}
+          </button>
+
+          {/* Badge — hidden on mobile */}
+          <div className="hidden md:flex items-center gap-[7px] text-[12px] font-semibold text-teal bg-[rgba(11,168,154,0.08)] border border-[rgba(11,168,154,0.2)] px-[14px] py-[6px] rounded-full tracking-[0.02em]">
+            <span className="w-[6px] h-[6px] rounded-full bg-teal blink" />
+            {tr.nav.available}
+          </div>
+
+          {/* Hamburger — visible on mobile */}
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+            aria-label="Menu"
+          >
+            <span className={`w-5 h-[1.5px] bg-ink rounded-full transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} />
+            <span className={`w-5 h-[1.5px] bg-ink rounded-full transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`w-5 h-[1.5px] bg-ink rounded-full transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="fixed top-[60px] left-0 right-0 z-40 bg-[rgba(248,248,246,0.98)] backdrop-blur-[20px] border-b border-[#e8e8e4] px-5 py-5 flex flex-col gap-1 md:hidden">
+          {links.map((l) => (
             <a
+              key={l.href}
               href={l.href}
-              className="text-[13.5px] font-medium text-muted hover:text-ink transition-colors duration-200 tracking-[0.01em]"
+              onClick={() => setMenuOpen(false)}
+              className="text-[15px] font-medium text-muted hover:text-ink transition-colors duration-200 py-3 border-b border-[#f0f0ec] last:border-none"
             >
               {l.label}
             </a>
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex items-center gap-3">
-        {/* Lang toggle */}
-        <button
-          onClick={toggle}
-          className="font-mono text-[11px] font-semibold text-muted border border-[#d8d8d4] px-[10px] py-[5px] rounded-full hover:text-ink hover:border-ink2 transition-all duration-200 tracking-[0.06em] uppercase"
-        >
-          {lang === "es" ? "EN" : "ES"}
-        </button>
-
-        {/* Badge */}
-        <div className="flex items-center gap-[7px] text-[12px] font-semibold text-teal bg-[rgba(11,168,154,0.08)] border border-[rgba(11,168,154,0.2)] px-[14px] py-[6px] rounded-full tracking-[0.02em]">
-          <span className="w-[6px] h-[6px] rounded-full bg-teal blink" />
-          {tr.nav.available}
+          ))}
+          <div className="flex items-center gap-[7px] text-[12px] font-semibold text-teal mt-3">
+            <span className="w-[6px] h-[6px] rounded-full bg-teal blink" />
+            {tr.nav.available}
+          </div>
         </div>
-      </div>
-    </nav>
+      )}
+    </>
   );
 }
