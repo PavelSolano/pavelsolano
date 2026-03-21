@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import { useT } from "@/lib/i18n";
 
 const links = [
   { label: "About", href: "#about" },
@@ -13,6 +15,8 @@ const links = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const { lang, toggle } = useLanguage();
+  const tr = useT(lang);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 16);
@@ -50,10 +54,20 @@ export default function Nav() {
         ))}
       </ul>
 
-      {/* Badge */}
-      <div className="flex items-center gap-[7px] text-[12px] font-semibold text-teal bg-[rgba(11,168,154,0.08)] border border-[rgba(11,168,154,0.2)] px-[14px] py-[6px] rounded-full tracking-[0.02em]">
-        <span className="w-[6px] h-[6px] rounded-full bg-teal blink" />
-        Available for projects
+      <div className="flex items-center gap-3">
+        {/* Lang toggle */}
+        <button
+          onClick={toggle}
+          className="font-mono text-[11px] font-semibold text-muted border border-[#d8d8d4] px-[10px] py-[5px] rounded-full hover:text-ink hover:border-ink2 transition-all duration-200 tracking-[0.06em] uppercase"
+        >
+          {lang === "es" ? "EN" : "ES"}
+        </button>
+
+        {/* Badge */}
+        <div className="flex items-center gap-[7px] text-[12px] font-semibold text-teal bg-[rgba(11,168,154,0.08)] border border-[rgba(11,168,154,0.2)] px-[14px] py-[6px] rounded-full tracking-[0.02em]">
+          <span className="w-[6px] h-[6px] rounded-full bg-teal blink" />
+          {tr.nav.available}
+        </div>
       </div>
     </nav>
   );

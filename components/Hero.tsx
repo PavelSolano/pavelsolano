@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import { useT } from "@/lib/i18n";
 
 export default function Hero() {
+  const { lang } = useLanguage();
+  const tr = useT(lang);
+
   return (
     <section className="relative z-10 max-w-[1180px] mx-auto px-14 pt-[130px] pb-20 grid grid-cols-[1fr_400px] gap-16 items-center min-h-screen">
       {/* LEFT */}
@@ -18,24 +25,19 @@ export default function Hero() {
 
         {/* H1 */}
         <h1 className="text-[clamp(42px,5.2vw,68px)] font-extrabold leading-[1.07] tracking-[-0.035em] text-ink mb-7">
-          Orquestando
+          Complex Systems
           <br />
-          sistemas que
-          <br />
-          <span className="text-teal">se sostienen</span>
-          <br />
-          a sí mismos.
+          <span className="text-teal">Designer</span>
         </h1>
 
         {/* Description */}
         <p className="text-[16px] text-muted leading-[1.8] max-w-[480px] mb-11 font-light">
-          <strong className="text-ink2 font-semibold">Strategic Project Manager</strong>{" "}
-          especializado en la orquestación de software complejo y ciclos de vida
-          de IA. Traduzco visión ejecutiva en{" "}
+          <strong className="text-ink2 font-semibold">{tr.hero.descBold1}</strong>{" "}
+          {tr.hero.descText1}{" "}
           <strong className="text-ink2 font-semibold">
-            arquitecturas técnicas resilientes
+            {tr.hero.descBold2}
           </strong>{" "}
-          usando Agile, VSM y Pensamiento Sistémico.
+          {tr.hero.descText2}
         </p>
 
         {/* CTAs */}
@@ -44,13 +46,13 @@ export default function Hero() {
             href="#work"
             className="inline-flex items-center gap-2 bg-ink text-white text-[14px] font-bold px-[26px] py-[13px] rounded-full hover:bg-ink2 hover:-translate-y-[2px] hover:shadow-[0_10px_28px_rgba(0,0,0,0.12)] transition-all duration-200"
           >
-            Ver proyectos →
+            {tr.hero.cta1}
           </a>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 text-muted text-[14px] font-semibold px-[26px] py-[13px] rounded-full border-[1.5px] border-[#d8d8d4] hover:text-ink hover:border-ink2 transition-all duration-200"
           >
-            Hablemos
+            {tr.hero.cta2}
           </a>
         </div>
       </div>

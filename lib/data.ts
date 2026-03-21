@@ -11,7 +11,7 @@ export const stats = [
   { value: "PhD", suffix: ".", label: "Systems Engineering · IPN" },
   { value: "3", suffix: "+", label: "Publications · MDPI / Scopus" },
   { value: "5", suffix: "yr", label: "Complex Systems Projects" },
-  { value: "I4", suffix: ".0/5.0", label: "Industry Automation & AI" },
+  { value: "Industry", suffix: " 5.0", label: "Industry Automation & AI" },
 ];
 
 export const services = [
